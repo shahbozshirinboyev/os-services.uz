@@ -138,6 +138,20 @@ body {
   /* margin-right: 12px; */
   border: 1px solid #8bcdffee;
 }
+.table-list-nth li:nth-child(5) {
+  margin-top: 15px; /* Yuqori tomondan bo'sh joy */
+  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+}
+.table-list-nth3 li:nth-child(3) {
+  margin-top: 15px; /* Yuqori tomondan bo'sh joy */
+  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+}
+.table-list-nth2 li:nth-child(2) {
+  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+}
+.table-list-nth2 li:nth-child(4) {
+  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+}
 .btn1:hover, .btn2:hover{
   background-color: #3ba1e7;
   color: #fff;
