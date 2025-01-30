@@ -19,6 +19,7 @@ body {
   position: relative;
   max-width: 100vw;
   overflow-x: hidden;
+  padding: 0 30px;
 }
 .wrapper i {
   z-index: 99;
@@ -40,10 +41,10 @@ body {
   transform: translateY(-50%) scale(0.85);
 }
 .wrapper i:first-child{
-  left: -22px;
+  left: 5px;
 }
 .wrapper i:last-child{
-  right: -22px;
+  right: 5px;
 }
 .wrapper .carousel{
   display: grid;
