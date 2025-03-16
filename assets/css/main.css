@@ -1989,9 +1989,9 @@ ol {
   position: relative;
   padding: 180px 0 120px 0;
   background-image: url(../images/backgroung-img-min.jpg);
-  background-repeat: no-repeat;  
+  background-repeat: no-repeat;
   background-size: 150% 150%;
-  
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2617,23 +2617,6 @@ ol {
   position: relative;
 }
 
-.footer .footer-top {
-  padding: 100px 0;
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .footer .footer-top {
-    padding: 80px 0;
-    padding-top: 40px;
-  }
-}
-
-@media (max-width: 767px) {
-  .footer .footer-top {
-    padding: 60px 0;
-    padding-top: 20px;
-  }
-}
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .footer .single-footer {
@@ -2648,23 +2631,12 @@ ol {
   }
 }
 
-.footer .single-footer.f-about {
-  padding-right: 30px;
-}
-
-@media (max-width: 767px) {
-  .footer .single-footer.f-about {
-    padding: 0;
-  }
-}
-
 .footer .single-footer.f-about .logo img {
   width: 180px;
 }
 
 .footer .single-footer.f-about p {
   color: #D2D6DC;
-  margin-top: 20px;
   font-size: 14px;
 }
 
