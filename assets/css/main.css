@@ -1990,8 +1990,7 @@ ol {
   padding: 180px 0 120px 0;
   background-image: url(../images/backgroung-img-min.jpg);
   background-repeat: no-repeat;
-  background-size: 150% 150%;
-
+  background-size: cover;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
