@@ -48,15 +48,17 @@ body {
 }
 .wrapper .carousel{
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100% / 3) - 12px);
+  grid-auto-columns: calc((100% / 4) - 12px);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 16px;
+  gap: 12px;
   border-radius: 8px;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  padding: 0 10px;
+  padding: 5px 0;
 }
 .carousel::-webkit-scrollbar {
   display: none;
@@ -79,7 +81,7 @@ body {
 }
 .carousel .card {
   scroll-snap-align: start;
-  height: 200px;
+  height: 150px;
   list-style: none;
   background: #fff;
   cursor: pointer;
@@ -103,8 +105,7 @@ body {
 }
 .carousel .card h6 {
   font-weight: 500;
-  /* font-size: 1.56rem; */
-  margin:  7px 0 7px;
+  margin-bottom: 10px;
 }
 .carousel .card span {
   color: #6A6D78;
