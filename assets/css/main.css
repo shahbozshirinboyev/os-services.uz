@@ -889,6 +889,12 @@ ol {
   width: 100%;
   height: 100%;
 }
+/* Monoblok - Modal = START */
+.monoblok_brand{
+  width: 70px;
+}
+/* Monoblok - Modal = END */
+
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .container {
     width: 450px;
