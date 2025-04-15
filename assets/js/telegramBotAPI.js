@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const telegramToken = "7581646932:AAHgIayJavDR4suo4JTrSilWtulBJzP0dlE";
         const chatId = "-1002682507907";
 
-        const modalElement = document.getElementById('monoblokModal');
-        const modal = new bootstrap.Modal(modalElement);
+        const modalEl = document.getElementById('monoblokModal');
+        const modal = bootstrap.Modal.getInstance(modalEl);
 
         try {
             const response = await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
