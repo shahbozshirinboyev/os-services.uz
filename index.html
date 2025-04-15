@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/title.svg">
     <!-- ========================= CSS here ========================= -->
+    <!-- intl-tel-input -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css" />
+
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/LineIcons.2.0.css">
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -16,6 +19,12 @@
     <link rel="stylesheet" href="assets/css/glightbox.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/wrapper.css">
+
+    <style>
+        .iti__flag-container {
+            pointer-events: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -191,7 +200,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div>
-                        <h5 class="modal-title fs-6" id="monoblokModalLabel">Buyurtma</h5>
+                        <h5 class="modal-title fs-6" id="monoblokModalLabel">Buyurtmani rasmiylashtirish</h5>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -204,22 +213,20 @@
                             <span class="fw-light" style="font-size: 12px;">H510 (D238)</span>
                         </div>
                     </div>
-                    <hr>
                     <form>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label mb-0">Ismingiz:</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div class="mb-2 mt-4">
+                            <label for="exampleInputEmail1" class="form-label mb-0">Ismingiz:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label mb-0">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1">
+                        <div class="d-flex flex-column mb-5">
+                            <label for="phone" class="form-label mb-0">Telefon raqamingiz:</label>
+                            <input id="phone" type="tel" class="form-control" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
-                    <button type="button" class="btn btn-primary">Buyurtma qoldirish</button>
+                        <div class="d-flex gap-2 justify-content-end">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+                            <button type="submit" class="btn btn-primary">Buyurtma qoldirish</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1782,6 +1789,57 @@
         var myCarousel = document.querySelector('#myCarousel')
         var carousel = new bootstrap.Carousel(myCarousel)
     </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<!-- Inputmask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
+
+    <!-- Init -->
+    <script>
+        const input = document.querySelector("#phone");
+
+        // intl-tel-input ishga tushirish
+        const iti = window.intlTelInput(input, {
+          initialCountry: "uz",
+          preferredCountries: ["uz"],
+          separateDialCode: true,
+          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+        });
+
+        // Mask faqat O‘zbekiston formati uchun
+        const uzbekMask = new Inputmask("99 999 99 99", {
+          placeholder: "_",
+          showMaskOnHover: false
+        });
+        uzbekMask.mask(input);
+
+        // +998 avtomatik qo‘shish
+        input.addEventListener("focus", () => {
+          if (!input.value.startsWith("+998")) {
+            input.value = "+998 ";
+          }
+        });
+
+        // faqat raqamlar va maksimal uzunlik tekshirish (buyurtma yuborishda)
+        function isValidPhone() {
+          const raw = input.inputmask.unmaskedvalue();
+          return raw.length === 9; // 9 raqam (XX XXX XX XX)
+        }
+
+        // Misol: Formani tekshirishda chaqirish
+        function handleSubmit() {
+          if (!isValidPhone()) {
+            alert("Telefon raqami noto‘g‘ri formatda!");
+            return false;
+          }
+          alert("✅ To‘g‘ri kiritildi!");
+          return true;
+        }
+      </script>
+
+
     <!-- ========================= JS here end ========================= -->
 
 </body>
