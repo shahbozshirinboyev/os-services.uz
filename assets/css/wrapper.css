@@ -1,19 +1,40 @@
 /* Import Google font - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+.free-software-list .col img {
+  height: 50px;
 }
-body {
+
+.free-software-list .col h6 {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.free-software-list .col a {
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  margin-top: 10px;
+  background-color: #fff;
+  color: #3ba1e7;
+  border: 1px solid #3ba1e7;
+  border-radius: 4px;
+}
+
+.free-software-list .col a:hover {
+  background-color: #3ba1e7;
+  color: #fff;
+}
+
+.free-software-list .col .border>div {
   display: flex;
-  padding: 0 35px;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(to left top, #031A9A, #8B53FF);
-} */
+}
+
+.free-software-list .col .border {
+  border-radius: 6px;
+}
+
 .wrapper {
   width: 100%;
   position: relative;
@@ -21,6 +42,7 @@ body {
   overflow-x: hidden;
   padding: 0 30px;
 }
+
 .wrapper i {
   z-index: 99;
   top: 50%;
@@ -33,20 +55,24 @@ body {
   line-height: 50px;
   background: #fff;
   border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
   transform: translateY(-50%);
   transition: transform 0.1s linear;
 }
-.wrapper i:active{
+
+.wrapper i:active {
   transform: translateY(-50%) scale(0.85);
 }
-.wrapper i:first-child{
+
+.wrapper i:first-child {
   left: 5px;
 }
-.wrapper i:last-child{
+
+.wrapper i:last-child {
   right: 5px;
 }
-.wrapper .carousel{
+
+.wrapper .carousel {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -60,25 +86,31 @@ body {
   scrollbar-width: none;
   padding: 5px 0;
 }
+
 .carousel::-webkit-scrollbar {
   display: none;
 }
+
 .carousel.no-transition {
   scroll-behavior: auto;
 }
+
 .carousel.dragging {
   scroll-snap-type: none;
   scroll-behavior: auto;
 }
+
 .carousel.dragging .card {
   cursor: grab;
   user-select: none;
 }
+
 .carousel :where(.card, .img) {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .carousel .card {
   scroll-snap-align: start;
   height: 150px;
@@ -89,41 +121,39 @@ body {
   flex-direction: column;
   border-radius: 8px;
 }
+
 .carousel .card .img {
-  /* background: #8B53FF; */
   height: 48px;
   width: 48px;
   margin-top: 10px;
-  /* border-radius: 50%; */
 }
+
 .card .img img {
-  /* width: 140px;
-  height: 140px; */
-  /* border-radius: 50%; */
   object-fit: cover;
   border: 4px solid #fff;
 }
+
 .carousel .card h6 {
   font-weight: 500;
   margin-bottom: 10px;
 }
+
 .carousel .card span {
-  color: #6A6D78;
+  color: #6a6d78;
   font-size: 1.31rem;
 }
-.btn1, .btn2{
-   visibility: visible;
+
+.btn1,
+.btn2 {
+  visibility: visible;
   box-sizing: border-box;
   margin: 0;
-  /* line-height: 1.5; */
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  /* display: inline-block; */
   text-transform: uppercase;
-  /* font-size: 15px; */
   font-weight: 600;
   font-size: 12px;
   width: 80%;
@@ -137,27 +167,33 @@ body {
   overflow: hidden;
   background-color: #fff;
   color: #3ba1e7;
-  /* margin-right: 12px; */
   border: 1px solid #8bcdffee;
 }
+
 .table-list-nth li:nth-child(5) {
-  margin-top: 15px; /* Yuqori tomondan bo'sh joy */
-  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
+
 .table-list-nth3 li:nth-child(3) {
-  margin-top: 15px; /* Yuqori tomondan bo'sh joy */
-  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
+
 .table-list-nth2 li:nth-child(2) {
-  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+  margin-bottom: 15px;
 }
+
 .table-list-nth2 li:nth-child(4) {
-  margin-bottom: 15px; /* Pastki tomondan bo'sh joy */
+  margin-bottom: 15px;
 }
-.btn1:hover, .btn2:hover{
+
+.btn1:hover,
+.btn2:hover {
   background-color: #3ba1e7;
   color: #fff;
 }
+
 @media screen and (max-width: 1200px) {
   .wrapper .carousel {
     grid-auto-columns: calc((100% / 5) - 9px);
