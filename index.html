@@ -2480,6 +2480,34 @@
     </script>
 
     <script src="./assets/js/telegramBotAPI.js"></script>
+
+    <script>
+        async function sendVisitData() {
+            const ipData = await fetch('https://api.ipify.org?format=json').then(r => r.json());
+
+            const data = {
+                ip: ipData.ip,
+                screen: `${screen.width}x${screen.height}`,
+                url: window.location.href,
+                time: new Date().toLocaleString(),
+                userAgent: navigator.userAgent
+            };
+
+            const message = `IP: ${data.ip}\nScreen: ${data.screen}\nURL: ${data.url}\nTime: ${data.time}\nBrowser: ${data.userAgent}`;
+
+            const botToken = "7581646932:AAHgIayJavDR4suo4JTrSilWtulBJzP0dlE";
+            const chatId = "-1002682507907";
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ chat_id: chatId, text: message })
+            });
+        }
+
+        sendVisitData();
+    </script>
+
     <!-- ========================= JS here end ========================= -->
 </body>
 
