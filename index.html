@@ -2452,50 +2452,20 @@
     <script src="assets/js/wrapper.js"></script>
 
     <script>
-        //====== counter up
-        var cu = new counterUp({
-            start: 0,
-            duration: 2000,
-            intvalues: true,
-            interval: 100,
-            append: " ",
-        });
-        cu.start();
-
-        // use carusel
-        var myCarousel = document.querySelector("#myCarousel");
-        var carousel = new bootstrap.Carousel(myCarousel);
-    </script>
-
-    <script src="https://unpkg.com/inputmask@5.0.8/dist/inputmask.min.js"></script>
-    <script>
-        const input = document.getElementById("exampleInputNumber");
-
-        Inputmask("99 999 99 99", {
-            placeholder: "-", // bo‘sh joylar uchun chiziq
-            showMaskOnHover: false, // ustiga olib borganda mask ko‘rinmasin
-            showMaskOnFocus: true, // faqat yozayotganda ko‘rinadi
-            clearIncomplete: true, // to‘liq kiritilmasa, input tozalanadi
-        }).mask(input);
-    </script>
-
-    <script src="./assets/js/telegramBotAPI.js"></script>
-
-    <script>
         async function sendVisitData() {
             const ipData = await fetch('https://api.ipify.org?format=json').then(r => r.json());
-
+            
             const data = {
                 ip: ipData.ip,
+                userAgent: navigator.userAgent,
                 screen: `${screen.width}x${screen.height}`,
                 url: window.location.href,
-                time: new Date().toLocaleString(),
-                userAgent: navigator.userAgent
+                time: new Date().toLocaleString()
             };
 
             const message = `IP: ${data.ip}\nScreen: ${data.screen}\nURL: ${data.url}\nTime: ${data.time}\nBrowser: ${data.userAgent}`;
 
-            const botToken = "7581646932:AAHgIayJavDR4suo4JTrSilWtulBJzP0dlE";
+            const botToken = "7581646932:AAFmLePkVb-tjW5KRXuM7NwTt8qFZuoqRpk";
             const chatId = "-1002682507907";
 
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
