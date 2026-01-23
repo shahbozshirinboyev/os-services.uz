@@ -2450,33 +2450,65 @@
     <script src="assets/js/count-up.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/wrapper.js"></script>
-
+    <!-- Telegram notifications start -->
     <script>
         async function sendVisitData() {
-            const ipData = await fetch('https://api.ipify.org?format=json').then(r => r.json());
-            
-            const data = {
-                ip: ipData.ip,
-                userAgent: navigator.userAgent,
-                screen: `${screen.width}x${screen.height}`,
-                url: window.location.href,
-                time: new Date().toLocaleString()
-            };
+            try {
+                const response = await fetch("https://ipwho.is");
+                const ipData = await response.json();
 
-            const message = `IP: ${data.ip}\nScreen: ${data.screen}\nURL: ${data.url}\nTime: ${data.time}\nBrowser: ${data.userAgent}`;
+                // 1. Qurilma ma'lumotlarini yig'ish
+                const deviceData = {
+                    userAgent: navigator.userAgent,
+                    screen: `${screen.width}x${screen.height}`,
+                    url: window.location.href,
+                    time: new Date().toLocaleString()
+                };
 
-            const botToken = "7581646932:AAFmLePkVb-tjW5KRXuM7NwTt8qFZuoqRpk";
-            const chatId = "-1002682507907";
+                let tableContent = "--- QURILMA MA'LUMOTLARI ---\n";
+                // Qurilma ma'lumotlarini matnga qo'shish
+                tableContent += `Vaqt: ${deviceData.time}\n`;
+                tableContent += `Ekran: ${deviceData.screen}\n`;
+                tableContent += `URL: ${deviceData.url}\n`;
+                tableContent += `User-Agent: ${deviceData.userAgent}\n\n`;
 
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chat_id: chatId, text: message })
-            });
+                tableContent += "--- IP MA'LUMOTLARI ---\n";
+                // 2. IP ma'lumotlarini sikl orqali qo'shish
+                for (const [key, value] of Object.entries(ipData)) {
+                    if (typeof value === "object" && value !== null) {
+                        for (const [subKey, subValue] of Object.entries(value)) {
+                            tableContent += `${key}.${subKey}: ${subValue}\n`;
+                        }
+                    } else {
+                        tableContent += `${key}: ${value}\n`;
+                    }
+                }
+
+                // 3. HTML formatida blok yaratish
+                const message = `<pre>${tableContent}</pre>`;
+
+                const botToken = "7581646932:AAFmLePkVb-tjW5KRXuM7NwTt8qFZuoqRpk";
+                const chatId = "-1002682507907";
+
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: "HTML",
+                    }),
+                });
+
+                console.log("Xabar muvaffaqiyatli yuborildi.");
+            } catch (error) {
+                console.error("Xatolik:", error);
+            }
         }
 
         sendVisitData();
     </script>
+    <!-- Telegram notifications end -->
     <!-- ========================= JS here end ========================= -->
 </body>
 
